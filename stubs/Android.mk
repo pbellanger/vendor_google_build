@@ -1,3 +1,5 @@
+LOCAL_PATH := $(call my-dir)
+
 include $(CLEAR_VARS)
 # EditorsDocsStub : 0.1 (stub)
 LOCAL_MODULE := EditorsDocsStub
