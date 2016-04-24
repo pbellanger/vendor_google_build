@@ -3,6 +3,9 @@ LOCAL_MODULE_CLASS := APPS
 LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_CERTIFICATE := PRESIGNED
 
+# Reduce system image size at the cost of initial boot time
+LOCAL_DEX_PREOPT := false
+
 # Override packages from GAPPS_LOCAL_OVERRIDES_PACKAGES only when required.
 # If a package should NOT in any case be installed, add it directly to LOCAL_OVERRIDES_PACKAGES instead.
 ifneq ($(GAPPS_LOCAL_OVERRIDES_PACKAGES),)
