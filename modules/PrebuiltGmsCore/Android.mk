@@ -5,4 +5,6 @@ LOCAL_MODULE := PrebuiltGmsCore
 LOCAL_PACKAGE_NAME := com.google.android.gms
 LOCAL_PRIVILEGED_MODULE := true
 
+GAPPS_LOCAL_OVERRIDES_PACKAGES := WAPPushManager
+
 include $(BUILD_GAPPS_PREBUILT_APK)
