@@ -68,9 +68,13 @@ DEVICE_PACKAGE_OVERLAYS += $(GAPPS_DEVICE_FILES_PATH)/overlay/stock
 PRODUCT_PACKAGES += GoogleCamera \
                     GoogleContacts \
                     LatinImeGoogle \
-                    PrebuiltBugle \
                     TagGoogle \
                     WebViewGoogle
+
+# Messenger app not installed on tablets
+ifeq ($(filter $(PRODUCT_CHARACTERISTICS),tablet),)
+PRODUCT_PACKAGES += PrebuiltBugle 
+endif
 
 ifneq ($(filter $(TARGET_GAPPS_VARIANT),super),)
 
