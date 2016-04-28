@@ -65,8 +65,7 @@ ifneq ($(filter $(TARGET_GAPPS_VARIANT),stock),) # require at least stock
 
 DEVICE_PACKAGE_OVERLAYS += $(GAPPS_DEVICE_FILES_PATH)/overlay/stock
 
-PRODUCT_PACKAGES += GoogleCamera \
-                    GoogleContacts \
+PRODUCT_PACKAGES += GoogleContacts \
                     LatinImeGoogle \
                     TagGoogle \
                     WebViewGoogle
@@ -74,6 +73,11 @@ PRODUCT_PACKAGES += GoogleCamera \
 # Messenger app not installed on tablets
 ifeq ($(filter $(PRODUCT_CHARACTERISTICS),tablet),)
 PRODUCT_PACKAGES += PrebuiltBugle 
+endif
+
+# Camera app only installed on device equiped with a camera
+ifeq ($(filter $(GAPPS_PRODUCT_HAS_CAMERA),false),)
+PRODUCT_PACKAGES += GoogleCamera 
 endif
 
 ifneq ($(filter $(TARGET_GAPPS_VARIANT),super),)
