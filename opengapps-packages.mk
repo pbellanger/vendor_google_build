@@ -70,9 +70,12 @@ PRODUCT_PACKAGES += GoogleContacts \
                     TagGoogle \
                     WebViewGoogle
 
-# Messenger app not installed on tablets
-ifeq ($(filter $(PRODUCT_CHARACTERISTICS),tablet),)
+# Messenger and Dialer apps only installed on phones (Dialer requires api level of 23 or above)
+ifeq ($(filter $(GAPPS_PRODUCT_TYPE),tablet),)
 PRODUCT_PACKAGES += PrebuiltBugle 
+ifneq ($(filter $(call get-allowed-api-levels),23),)
+PRODUCT_PACKAGES += GoogleDialer
+endif
 endif
 
 # Camera app only installed on device equiped with a camera
